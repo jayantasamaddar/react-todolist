@@ -41,9 +41,7 @@ export default function App() {
   const taskRef = useRef();
   const [tasks, dispatch] = useReducer(taskReducers, initialState);
 
-  console.log({ tasks });
-
-  // const addTask = () => dispatch({ type: 'onClick' })
+  console.log(tasks);
 
   return (
     <div className="App">
@@ -56,6 +54,9 @@ export default function App() {
           placeholder="Add a Task"
           onChange={e =>
             dispatch({ type: 'onChange', payload: e.target.value })
+          }
+          onKeyUp={e =>
+            e.key === 'Enter' ? dispatch({ type: 'addTask' }) : null
           }
         />
         <button
